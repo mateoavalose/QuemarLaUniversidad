@@ -1,13 +1,17 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { Prisma } from '@prisma/client';
+import { CreatePortafolioDto } from './dto/create-portafolio.dto';
+import { UpdatePortafolioDto } from './dto/update-portafolio.dto';
 
 @Injectable()
 export class PortafolioService {
   constructor(private prisma: PrismaService) {}
 
-  create(data: Prisma.PortafolioCreateArgs['data']) {
-    return this.prisma.portafolio.create({ data });
+  create(data: CreatePortafolioDto) {
+    // Prisma expects Decimal for some numeric fields; DTOs use plain numbers.
+    // Cast to Prisma type to keep signatures simple here while preserving runtime behavior.
+    return this.prisma.portafolio.create({ data: data as unknown as Prisma.PortafolioCreateArgs['data'] });
   }
 
   findAll() {
@@ -26,11 +30,11 @@ export class PortafolioService {
     return record;
   }
 
-  async update(codigoHPTU: string, data: Prisma.PortafolioUpdateArgs['data']) {
+  async update(codigoHPTU: string, data: UpdatePortafolioDto) {
     try {
       return await this.prisma.portafolio.update({
         where: { codigoHPTU },
-        data,
+        data: data as unknown as Prisma.PortafolioUpdateArgs['data'],
       });
     } catch (error) {
       this.handleMutationError(error, codigoHPTU);

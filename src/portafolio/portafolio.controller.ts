@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Body, Param, Delete, Put, Patch, Query, BadRequestException } from '@nestjs/common';
 import { PortafolioService } from './portafolio.service';
-import { Prisma } from '@prisma/client';
+import { CreatePortafolioDto } from './dto/create-portafolio.dto';
+import { UpdatePortafolioDto } from './dto/update-portafolio.dto';
+// Prisma types are handled in the service; controller uses DTOs
 import { ApiTags, ApiOperation, ApiQuery } from '@nestjs/swagger';
 
 @ApiTags('portafolio')
@@ -9,7 +11,7 @@ export class PortafolioController {
   constructor(private readonly portafolioService: PortafolioService) {}
 
   @Post()
-  create(@Body() data: Prisma.PortafolioCreateArgs['data']) {
+  create(@Body() data: CreatePortafolioDto) {
     return this.portafolioService.create(data);
   }
 
@@ -26,7 +28,7 @@ export class PortafolioController {
   @Put(':codigoHPTU')
   update(
     @Param('codigoHPTU') codigoHPTU: string,
-    @Body() data: Prisma.PortafolioUpdateArgs['data'],
+    @Body() data: UpdatePortafolioDto,
   ) {
     return this.portafolioService.update(codigoHPTU, data);
   }
@@ -96,3 +98,4 @@ export class PortafolioController {
     return numericValue;
   }
 }
+ 
