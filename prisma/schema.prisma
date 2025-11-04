@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Portafolio {
+  codigoHPTU              String   @id @map("CODIGO HPTU")
+  grupoConcepto           String?  @map("GRUPO CONCEPTO")
+  descripcionGrupoConcepto String? @map("DESCRIPCION GRUPO CONCEPTO")
+  conceptoHPTU            String?  @map("CONCEPTO HPTU")
+  descripcionConcepto     String?  @map("DESCRIPCION CONCEPTO")
+  codigoReemplazo2025     String?  @map("CODIGO / REEMPLAZO: CAMBIOS ANO 2025")
+  descripcionHPTU         String?  @map("DESCRIPCION HPTU")
+  tarifa2025BO            Decimal? @map("TARIFA 2025 (BO)")
+  grupoQuirurgico         String?  @map("GRUPO QUIRURGICO")
+  codigoConversionExterno String?  @map("CODIGO CONVERSION EXTERNO")
+  descripcionManualExterno String? @map("DESCRIPCION MANUAL EXTERNO")
+  codigoCupsAsociado      String?  @map("CODIGO CUPS ASOCIADO")
+  pbsNoPbs                String?  @map("PBS NO PBS")
+  aseguradora             String?  @default("BO") @map("ASEGURADORA")
+  codigoReps3100          String?  @map("CODIGO REPS (RESOLUCION 3100 DE 2019)")
+  observacionATerceros    String?  @map("OBSERVACION A TERCEROS")
+  incluye                 String?  @map("INCLUYE")
+  excluye                 String?  @map("EXCLUYE")
+  observacionesGenerales  String?  @map("OBSERVACIONES GENERALES")
+
+  @@map("portafolio")
+}
