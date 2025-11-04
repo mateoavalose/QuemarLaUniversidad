@@ -7,25 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model Portafolio {
-  codigoHPTU              String   @id @map("CODIGO HPTU")
-  grupoConcepto           String?  @map("GRUPO CONCEPTO")
+  grupoConcepto            String? @map("GRUPO CONCEPTO")
   descripcionGrupoConcepto String? @map("DESCRIPCION GRUPO CONCEPTO")
-  conceptoHPTU            String?  @map("CONCEPTO HPTU")
-  descripcionConcepto     String?  @map("DESCRIPCION CONCEPTO")
-  codigoReemplazo2025     String?  @map("CODIGO / REEMPLAZO: CAMBIOS ANO 2025")
-  descripcionHPTU         String?  @map("DESCRIPCION HPTU")
-  tarifa2025BO            Decimal? @map("TARIFA 2025 (BO)")
-  grupoQuirurgico         String?  @map("GRUPO QUIRURGICO")
-  codigoConversionExterno String?  @map("CODIGO CONVERSION EXTERNO")
+  conceptoHPTU             String? @map("CONCEPTO HPTU")
+  descripcionConcepto      String? @map("DESCRIPCION CONCEPTO")
+  codigoReemplazo2025      String? @map("CODIGO / REEMPLAZO: CAMBIOS ANO 2025")
+  codigoHPTU               String? @map("CODIGO HPTU")
+  descripcionHPTU          String? @map("DESCRIPCION HPTU")
+  tarifa2025BO             BigInt? @map("TARIFA 2025 (BO)")
+  grupoQuirurgico          String? @map("GRUPO QUIRURGICO")
+  codigoConversionExterno  String? @map("CODIGO CONVERSION EXTERNO")
   descripcionManualExterno String? @map("DESCRIPCION MANUAL EXTERNO")
-  codigoCupsAsociado      String?  @map("CODIGO CUPS ASOCIADO")
-  pbsNoPbs                String?  @map("PBS NO PBS")
-  codigoReps3100          String?  @map("CODIGO REPS (RESOLUCION 3100 DE 2019)")
-  observacionATerceros    String?  @map("OBSERVACION A TERCEROS")
-  incluye                 String?  @map("INCLUYE")
-  excluye                 String?  @map("EXCLUYE")
-  observacionesGenerales  String?  @map("OBSERVACIONES GENERALES")
+  codigoCupsAsociado       String? @map("CODIGO CUPS ASOCIADO")
+  pbsNoPbs                 String? @map("PBS NO PBS")
+  ASEGURADORA              String?
+  codigoReps3100           String? @map("CODIGO REPS (RESOLUCION 3100 DE 2019)")
+  observacionATerceros     String? @map("OBSERVACION A TERCEROS")
+  incluye                  String? @map("INCLUYE")
+  excluye                  String? @map("EXCLUYE")
+  observacionesGenerales   String? @map("OBSERVACIONES GENERALES")
 
   @@map("portafolio")
+  @@ignore
 }
