@@ -20,35 +20,35 @@ export class PortafolioController {
     return this.portafolioService.findAll();
   }
 
-  @Get(':codigoHPTU')
-  findOne(@Param('codigoHPTU') codigoHPTU: string) {
-    return this.portafolioService.findOne(codigoHPTU);
+  @Get(':codigo_hptu')
+  findOne(@Param('codigo_hptu') codigo_hptu: string) {
+    return this.portafolioService.findOne(codigo_hptu);
   }
 
-  @Put(':codigoHPTU')
+  @Put(':codigo_hptu')
   update(
-    @Param('codigoHPTU') codigoHPTU: string,
+    @Param('codigo_hptu') codigo_hptu: string,
     @Body() data: UpdatePortafolioDto,
   ) {
-    return this.portafolioService.update(codigoHPTU, data);
+    return this.portafolioService.update(codigo_hptu, data);
   }
 
-  @Delete(':codigoHPTU')
-  remove(@Param('codigoHPTU') codigoHPTU: string) {
-    return this.portafolioService.remove(codigoHPTU);
+  @Delete(':codigo_hptu')
+  remove(@Param('codigo_hptu') codigo_hptu: string) {
+    return this.portafolioService.remove(codigo_hptu);
   }
 
-  @Get('grupo/:grupoConcepto')
-  findByGrupoConcepto(@Param('grupoConcepto') grupoConcepto: string) {
-    return this.portafolioService.findByGrupoConcepto(grupoConcepto);
+  @Get('grupo/:grupo_concepto')
+  findByGrupoConcepto(@Param('grupo_concepto') grupo_concepto: string) {
+    return this.portafolioService.findByGrupoConcepto(grupo_concepto);
   }
 
   @ApiOperation({ summary: 'Actualizar tarifa de un registro' })
   @ApiQuery({ name: 'mode', required: true, description: 'percentage | fixed | overwrite' })
   @ApiQuery({ name: 'value', required: true, description: 'numeric value (percentage without % sign)' })
-  @Patch(':codigoHPTU/tarifa')
+  @Patch(':codigo_hptu/tarifa')
   updateTarifa(
-    @Param('codigoHPTU') codigoHPTU: string,
+    @Param('codigo_hptu') codigo_hptu: string,
     @Query('mode') mode?: string,
     @Query('value') value?: string,
   ) {
@@ -59,22 +59,22 @@ export class PortafolioController {
     
     const parsedMode = this.parseTarifaMode(mode);
     const numericValue = this.parseTarifaValue(value);
-    return this.portafolioService.updateTarifa(codigoHPTU, parsedMode, numericValue);
+    return this.portafolioService.updateTarifa(codigo_hptu, parsedMode, numericValue);
   }
 
   @ApiOperation({ summary: 'Actualizar tarifa por grupo de concepto' })
   @ApiQuery({ name: 'mode', required: true, description: 'percentage | fixed | overwrite' })
   @ApiQuery({ name: 'value', required: true, description: 'numeric value (percentage without % sign)' })
-  @Patch('grupo/:grupoConcepto/tarifa')
+  @Patch('grupo/:grupo_concepto/tarifa')
   updateTarifaByGrupo(
-    @Param('grupoConcepto') grupoConcepto: string,
+    @Param('grupo_concepto') grupo_concepto: string,
     @Query('mode') mode?: string,
     @Query('value') value?: string,
   ) {
     
     const parsedMode = this.parseTarifaMode(mode);
     const numericValue = this.parseTarifaValue(value);
-    return this.portafolioService.bulkUpdateTarifaByGrupo(grupoConcepto, parsedMode, numericValue);
+    return this.portafolioService.bulkUpdateTarifaByGrupo(grupo_concepto, parsedMode, numericValue);
   }
 
   private parseTarifaMode(mode?: string): 'percentage' | 'fixed' | 'overwrite' {

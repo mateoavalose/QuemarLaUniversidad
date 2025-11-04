@@ -5,68 +5,68 @@ import { Type } from 'class-transformer';
 export class CreatePortafolioDto {
 	@ApiProperty({ description: 'Código único HPTU', example: 'ABC-123' })
 	@IsString()
-	codigoHPTU!: string;
+	codigo_hptu!: string;
 
 	@ApiPropertyOptional({ description: 'Grupo de concepto' })
 	@IsOptional()
 	@IsString()
-	grupoConcepto?: string | null;
+	grupo_concepto?: string | null;
 
 	@ApiPropertyOptional({ description: 'Descripción del grupo de concepto' })
 	@IsOptional()
 	@IsString()
-	descripcionGrupoConcepto?: string | null;
+	descripcion_grupo_concepto?: string | null;
 
 	@ApiPropertyOptional({ description: 'Concepto HPTU' })
 	@IsOptional()
 	@IsString()
-	conceptoHPTU?: string | null;
+	concepto_hptu?: string | null;
 
 	@ApiPropertyOptional({ description: 'Descripción del concepto' })
 	@IsOptional()
 	@IsString()
-	descripcionConcepto?: string | null;
+	descripcion_concepto?: string | null;
 
 	@ApiPropertyOptional({ description: 'Código de reemplazo 2025' })
 	@IsOptional()
 	@IsString()
-	codigoReemplazo2025?: string | null;
+	codigo_reemplazo_cambios_ano_2025?: string | null;
 
 	@ApiPropertyOptional({ description: 'Descripción HPTU' })
 	@IsOptional()
 	@IsString()
-	descripcionHPTU?: string | null;
+	descripcion_hptu?: string | null;
 
 	@ApiPropertyOptional({ description: 'Tarifa 2025 (BO)', type: Number })
 	@IsOptional()
 	@Type(() => Number)
 	@IsNumber()
-	tarifa2025BO?: number | null;
+	tarifa_2025_bo?: number | null;
 
 	@ApiPropertyOptional({ description: 'Grupo quirúrgico' })
 	@IsOptional()
 	@IsString()
-	grupoQuirurgico?: string | null;
+	grupo_quirurgico?: string | null;
 
 	@ApiPropertyOptional({ description: 'Código de conversión externo' })
 	@IsOptional()
 	@IsString()
-	codigoConversionExterno?: string | null;
+	codigo_conversion_externo?: string | null;
 
 	@ApiPropertyOptional({ description: 'Descripción del manual externo' })
 	@IsOptional()
 	@IsString()
-	descripcionManualExterno?: string | null;
+	descripcion_manual_externo?: string | null;
 
 	@ApiPropertyOptional({ description: 'Código CUPS asociado' })
 	@IsOptional()
 	@IsString()
-	codigoCupsAsociado?: string | null;
+	codigo_cups_asociado?: string | null;
 
 	@ApiPropertyOptional({ description: 'PBS / NO PBS' })
 	@IsOptional()
 	@IsString()
-	pbsNoPbs?: string | null;
+	pbs_no_pbs?: string | null;
 
 	@ApiPropertyOptional({ description: 'Aseguradora', example: 'BO' })
 	@IsOptional()
@@ -76,12 +76,12 @@ export class CreatePortafolioDto {
 	@ApiPropertyOptional({ description: 'Código REPS (resolución 3100 de 2019)' })
 	@IsOptional()
 	@IsString()
-	codigoReps3100?: string | null;
+	codigo_reps_resolucion_3100_2019?: string | null;
 
 	@ApiPropertyOptional({ description: 'Observación a terceros' })
 	@IsOptional()
 	@IsString()
-	observacionATerceros?: string | null;
+	observacion_a_terceros?: string | null;
 
 	@ApiPropertyOptional({ description: 'Incluye' })
 	@IsOptional()
@@ -96,5 +96,5 @@ export class CreatePortafolioDto {
 	@ApiPropertyOptional({ description: 'Observaciones generales' })
 	@IsOptional()
 	@IsString()
-	observacionesGenerales?: string | null;
+	observaciones_generales?: string | null;
 }
