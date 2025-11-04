@@ -54,10 +54,6 @@ export class PortafolioService {
   async findByGrupoConcepto(grupoConcepto: string) {
     return this.prisma.portafolio.findMany({
       where: { grupoConcepto },
-      select: {
-        grupoConcepto: true,
-        descripcionGrupoConcepto: true,
-      },
     });
   }
 
